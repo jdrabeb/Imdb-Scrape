@@ -7,6 +7,19 @@ from timed import timed
 
 class imdbScrape:
 
+    '''
+    Scrape from the first number of given by data_limit the following data:
+        -Title
+        -Link
+        -Image link
+        -Release date
+        -Genre
+        -Rating
+        -Description
+        -Votes
+    store them in a Videogame object and append it to list of games
+    @return : list of games
+    '''
     @timed(enabled=True)
     def scrape_games(pageUrl, data_limit):
         games = []
@@ -32,6 +45,10 @@ class imdbScrape:
             print('Error')
         return games
 
+    '''
+    Display all video games scraped in a dataset limited by data_limit
+    the display follows a predefined formatting
+    '''
     @timed(enabled=True)
     def scrape_toString(pageUrl, data_limit):
         html = urlopen(pageUrl)
@@ -40,6 +57,10 @@ class imdbScrape:
         for game in games:
             print(game.toString())
 
+    '''
+    Scrape the full poster of a given video game title
+    @return: the full poster
+    '''
     @timed(enabled=True)
     def scrape_full_poster(pageUrl, data_limit, title):
         html = urlopen(pageUrl)
@@ -59,6 +80,11 @@ class imdbScrape:
             print('Error')
         return poster
 
+    '''
+    Scrape a list of all the posters of a dataset of video games
+    limited by data_limit
+    @return: lists of miniature posters
+    '''
     @timed(enabled=True)
     def scrape_posters(pageUrl, data_limit):
         posters = []
@@ -73,6 +99,10 @@ class imdbScrape:
             print('Error')
         return posters
 
+    '''
+    Scrape the miniature poster of a given video game title
+    @return: the miniature poster
+    '''
     @timed(enabled=True)
     def scrape_poster_by_title(pageUrl, data_limit, title):
         html = urlopen(pageUrl)

@@ -25,13 +25,20 @@ create_csv(scrape_games)
 # Save games added to database in a json file
 #create_json(scrape_games)
 
+'''
+Home page of the app
+Displays all the video games in the database
+'''
 @timed(enabled=True)
 @app.route("/", methods=["GET", "POST"])
 def home():
     games = Videogame.query.all()
     return render_template("index.html", games = games)
 
-
+'''
+Search a video game by substring in the title
+The results are displayed on the index page
+'''
 @timed(enabled=True)
 @app.route("/search", methods=["GET", "POST"])
 def search():
@@ -40,6 +47,9 @@ def search():
             Videogame.title.contains(search_title)).all()
     return render_template("index.html", games = found_games)
 
+'''
+Add a video game to the database
+'''
 @timed(enabled=True)
 @app.route("/add", methods=["GET", "POST"])
 def add():
@@ -57,7 +67,9 @@ def add():
     db.session.commit()
     return redirect("/")
 
-
+'''
+Update the genre of a given video game
+'''
 @timed(enabled=True)
 @app.route("/update", methods=["POST"])
 def update():
@@ -73,6 +85,10 @@ def update():
         print(e)
     return redirect("/")
 
+'''
+Delete a given video game from the database
+the game is also deleted from the display
+'''
 @timed(enabled=True)
 @app.route("/delete", methods=["POST"])
 def delete():

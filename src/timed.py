@@ -5,7 +5,10 @@ import time
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-
+'''
+Decorator that logs the name of the function
+and the time it's been running for
+'''
 def timed(enabled):
     def dec_timed(func):
         if enabled:

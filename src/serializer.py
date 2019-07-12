@@ -1,6 +1,9 @@
 import csv
 import json
 
+'''
+Serialize to a csv file with the data in the database
+'''
 def create_csv(games):
     with open('csv/games.csv', mode='w') as csv_file:
         fieldnames = ['title', 'link', 'image', 'date', 'genre', 'rating',

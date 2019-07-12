@@ -4,6 +4,10 @@ from app import create_app
 
 db, app = create_app()
 
+'''
+Data model for the database
+Store the scrapped information of a video game
+'''
 class Videogame(db.Model):
     __tablename__ = 'games'
 
