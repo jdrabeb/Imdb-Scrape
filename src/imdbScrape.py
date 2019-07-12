@@ -16,8 +16,8 @@ class imdbScrape:
             for element in bs.findAll("div",
                     {"class": "lister-item mode-advanced"})[:data_limit]:
                 game = Videogame()
-                game.set_link("www.imdb.com" + element.find("a")['href'])
-                game.set_image(element.find("img")['src'])
+                game.set_link("http://www.imdb.com" + element.find("a")['href'])
+                game.set_image(element.find("img")['loadlate'])
                 game.set_title(element.find("h3",
                     {"class": "lister-item-header"}).a.text)
                 game.set_date(element.find("span",

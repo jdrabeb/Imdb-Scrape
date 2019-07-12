@@ -19,7 +19,7 @@ def home():
         db.session.add(game)
         db.session.commit()
 
-    return render_template("home.html", games = Videogame.query.all())
+    return render_template("index.html", games = Videogame.query.all())
 
 if __name__ == "__main__":
     app.run(debug=True)
