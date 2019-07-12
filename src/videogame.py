@@ -84,13 +84,13 @@ class Videogame(db.Model):
         return self.votes
 
     def toString(self):
-        print("title: " + self.title +
-                ", genre: " + self.genre +
-                ", release date: " + self.date +
-                ", rating: " + self.rating +
-                ", description: " + self.description +
-                ", votes: " + self.votes)
-
+        print("Title: " + self.title +
+                "\nGenre: " + self.genre +
+                "\nRelease date: " + self.date +
+                "\nRating: " + self.rating +
+                "\nDescription: " + self.description +
+                "\nVotes: " + self.votes +
+                "\n")
 
 db.session.remove()
 db.drop_all()

@@ -32,19 +32,60 @@ class imdbScrape:
             print('Error')
         return games
 
-    def create_csv(games):
-        with open('games.csv', mode='w') as csv_file:
-            fieldnames = ['title', 'link', 'image', 'date', 'genre', 'rating',
-                   'description', 'votes']
-            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-            writer.writeheader()
-            for game in games:
-                writer.writerow({'title': game.get_title()})
-                writer.writerow({'link': game.get_link()})
-                writer.writerow({'image': game.get_image()})
-                writer.writerow({'date': game.get_date()})
-                writer.writerow({'genre': game.get_genre()})
-                writer.writerow({'rating': game.get_rating()})
-                writer.writerow({'description': game.get_description()})
-                writer.writerow({'votes': game.get_votes()})
+    @timed(enabled=True)
+    def scrape_toString(pageUrl, data_limit):
+        html = urlopen(pageUrl)
+        bs = BeautifulSoup(html, 'html.parser')
+        games = imdbScrape.scrape_games(pageUrl, data_limit)
+        for game in games:
+            print(game.toString())
+
+    @timed(enabled=True)
+    def scrape_full_poster(pageUrl, data_limit, title):
+        html = urlopen(pageUrl)
+        bs = BeautifulSoup(html, 'html.parser')
+        try:
+            for element in bs.findAll("div",
+                    {"class": "lister-item mode-advanced"})[:data_limit]:
+                game_title = element.find("h3",
+                    {"class": "lister-item-header"}).a.text
+                if title.lower() in game_title.lower():
+                    link = "http://www.imdb.com" + element.find("a")['href']
+                    game_html = urlopen(link)
+                    bs = BeautifulSoup(game_html, 'html.parser')
+                    poster = "http://www.imdb.com" + bs.find(
+                            "div", {"class": "poster"}).a['href']
+        except AttributeError:
+            print('Error')
+        return poster
+
+    @timed(enabled=True)
+    def scrape_posters(pageUrl, data_limit):
+        posters = []
+        html = urlopen(pageUrl)
+        bs = BeautifulSoup(html, 'html.parser')
+        try:
+            for element in bs.findAll("div",
+                    {"class": "lister-item mode-advanced"})[:data_limit]:
+                poster = element.find("img")['loadlate']
+                posters.append(poster)
+        except AttributeError:
+            print('Error')
+        return posters
+
+    @timed(enabled=True)
+    def scrape_poster_by_title(pageUrl, data_limit, title):
+        html = urlopen(pageUrl)
+        bs = BeautifulSoup(html, 'html.parser')
+        try:
+            for element in bs.findAll("div",
+                    {"class": "lister-item mode-advanced"})[:data_limit]:
+                game_title = element.find("h3",
+                    {"class": "lister-item-header"}).a.text
+                if title.lower() in game_title.lower():
+                    poster = element.find("img")['loadlate']
+                    return poster
+        except AttributeError:
+            print('Error')
+            return None
 
