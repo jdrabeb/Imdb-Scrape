@@ -4,9 +4,6 @@ import re
 import csv
 from videogame import Videogame
 
-URL = 'https://www.imdb.com/search/title/?genres=drama&sort=user_rating&title_type=game'
-DATA_LIMIT = 10
-
 class imdbScrape:
     def scrape_games(pageUrl, data_limit):
         games = []

@@ -8,7 +8,7 @@ from app import create_app
 from videogame import Videogame
 
 URL = 'https://www.imdb.com/search/title/?genres=drama&sort=user_rating&title_type=game'
-DATA_LIMIT = 10
+DATA_LIMIT = 50
 
 db, app = create_app()
 
