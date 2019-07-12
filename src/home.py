@@ -20,10 +20,23 @@ for game in scrape_games:
 @app.route("/", methods=["GET", "POST"])
 def home():
     games = Videogame.query.all()
-    for game in games:
+    return render_template("index.html", games = games)
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    search_title = request.form.get("search_title")
+    found_games = Videogame.query.filter(
+            Videogame.title.contains(search_title)).all()
+    print("--------------------")
+
+    print("--------------------")
+    print("--------------------")
+    print("--------------------")
+    print("--------------------")
+    for game in found_games:
         print(game.title)
-    # Add scraped data to the database
-    return render_template("index.html", games = Videogame.query.all())
+    return render_template("index.html", games = found_games)
 
 @app.route("/add", methods=["GET", "POST"])
 def add():
