@@ -3,12 +3,15 @@ from flask import render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask import request
 from flask import redirect
+from flask import jsonify
 from imdbScrape import imdbScrape
 from app import create_app
 from videogame import Videogame
+from serializer import create_csv, create_json
+from timed import timed
 
 URL = 'https://www.imdb.com/search/title/?genres=drama&sort=user_rating&title_type=game'
-DATA_LIMIT = 50
+DATA_LIMIT = 20
 
 db, app = create_app()
 
@@ -17,27 +20,27 @@ for game in scrape_games:
     db.session.add(game)
     db.session.commit()
 
+# Save games added to database in a csv file
+create_csv(scrape_games)
+# Save games added to database in a json file
+#create_json(scrape_games)
+
+@timed(enabled=True)
 @app.route("/", methods=["GET", "POST"])
 def home():
     games = Videogame.query.all()
     return render_template("index.html", games = games)
 
 
+@timed(enabled=True)
 @app.route("/search", methods=["GET", "POST"])
 def search():
     search_title = request.form.get("search_title")
     found_games = Videogame.query.filter(
             Videogame.title.contains(search_title)).all()
-    print("--------------------")
-
-    print("--------------------")
-    print("--------------------")
-    print("--------------------")
-    print("--------------------")
-    for game in found_games:
-        print(game.title)
     return render_template("index.html", games = found_games)
 
+@timed(enabled=True)
 @app.route("/add", methods=["GET", "POST"])
 def add():
     title = request.form.get("title")
@@ -55,6 +58,7 @@ def add():
     return redirect("/")
 
 
+@timed(enabled=True)
 @app.route("/update", methods=["POST"])
 def update():
     # Update the genre of a given video game in the database
@@ -69,6 +73,7 @@ def update():
         print(e)
     return redirect("/")
 
+@timed(enabled=True)
 @app.route("/delete", methods=["POST"])
 def delete():
     # Delete a video game from the database by id

@@ -3,8 +3,11 @@ from bs4 import BeautifulSoup
 import re
 import csv
 from videogame import Videogame
+from timed import timed
 
 class imdbScrape:
+
+    @timed(enabled=True)
     def scrape_games(pageUrl, data_limit):
         games = []
         html = urlopen(pageUrl)
