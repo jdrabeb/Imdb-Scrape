@@ -23,6 +23,6 @@ def create_csv(games):
 def create_json(games):
     with open('json/games.json', 'w') as json_file:
         for game in games:
-            data = json.dumps(game.__dict__)
+            data = game.toJSON()
             json.dump(data, json_file)
 

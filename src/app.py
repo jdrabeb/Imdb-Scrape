@@ -11,6 +11,6 @@ def create_app():
     app = Flask(__name__)
     database_file = "sqlite:///games.db"
     app.config["SQLALCHEMY_DATABASE_URI"] = database_file
-
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db = SQLAlchemy(app)
     return db, app

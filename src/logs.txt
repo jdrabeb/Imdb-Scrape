@@ -1,0 +1,62 @@
+23:23:22,889 urbanGUI INFO test ran in 0.0s
+23:23:35,170 urbanGUI INFO test ran in 0.0s
+23:24:41,499 Web_Scrapping INFO scrape_games ran in 1.76s
+23:24:43,315 werkzeug INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+23:24:43,315 werkzeug INFO  * Restarting with stat
+23:24:44,760 Web_Scrapping INFO scrape_games ran in 0.94s
+23:24:47,290 werkzeug WARNING  * Debugger is active!
+23:24:47,290 werkzeug INFO  * Debugger PIN: 119-305-682
+23:25:44,868 Web_Scrapping INFO scrape_games ran in 1.35s
+23:25:47,319 werkzeug INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+23:25:47,319 werkzeug INFO  * Restarting with stat
+23:25:48,805 Web_Scrapping INFO scrape_games ran in 0.99s
+23:25:51,47 werkzeug WARNING  * Debugger is active!
+23:25:51,47 werkzeug INFO  * Debugger PIN: 119-305-682
+23:26:16,804 werkzeug INFO 127.0.0.1 - - [12/Jul/2019 23:26:16] "GET / HTTP/1.1" 200 -
+23:36:18,804 Web_Scrapping INFO scrape_games ran in 1.66s
+23:36:20,477 werkzeug INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+23:36:20,478 werkzeug INFO  * Restarting with stat
+23:36:21,901 Web_Scrapping INFO scrape_games ran in 0.96s
+23:36:26,375 werkzeug WARNING  * Debugger is active!
+23:36:26,375 werkzeug INFO  * Debugger PIN: 129-508-355
+23:36:36,544 werkzeug INFO 127.0.0.1 - - [12/Jul/2019 23:36:36] "GET / HTTP/1.1" 200 -
+23:36:40,577 werkzeug INFO 127.0.0.1 - - [12/Jul/2019 23:36:40] "POST /search HTTP/1.1" 200 -
+23:42:52,692 Web_Scrapping INFO scrape_games ran in 1.9s
+23:42:54,160 werkzeug INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+23:42:54,161 werkzeug INFO  * Restarting with stat
+23:42:55,653 Web_Scrapping INFO scrape_games ran in 1.03s
+23:42:57,436 werkzeug WARNING  * Debugger is active!
+23:42:57,437 werkzeug INFO  * Debugger PIN: 129-508-355
+23:43:01,293 werkzeug INFO 127.0.0.1 - - [12/Jul/2019 23:43:01] "GET / HTTP/1.1" 200 -
+23:43:45,32 Web_Scrapping INFO scrape_games ran in 1.79s
+23:43:47,90 werkzeug INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+23:43:47,91 werkzeug INFO  * Restarting with stat
+23:43:48,610 Web_Scrapping INFO scrape_games ran in 1.05s
+23:43:50,358 werkzeug WARNING  * Debugger is active!
+23:43:50,359 werkzeug INFO  * Debugger PIN: 129-508-355
+23:43:54,277 werkzeug INFO 127.0.0.1 - - [12/Jul/2019 23:43:54] "GET / HTTP/1.1" 200 -
+23:45:22,604 Web_Scrapping INFO scrape_games ran in 1.26s
+23:45:24,879 werkzeug INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+23:45:24,880 werkzeug INFO  * Restarting with stat
+23:45:26,538 Web_Scrapping INFO scrape_games ran in 1.14s
+23:45:28,692 werkzeug WARNING  * Debugger is active!
+23:45:28,693 werkzeug INFO  * Debugger PIN: 119-305-682
+23:45:31,51 werkzeug INFO 127.0.0.1 - - [12/Jul/2019 23:45:31] "GET / HTTP/1.1" 200 -
+23:51:49,403 Web_Scrapping INFO scrape_games ran in 1.38s
+23:52:08,940 Web_Scrapping INFO scrape_games ran in 1.5s
+23:52:09,765 Web_Scrapping INFO scrape_poster_by_title ran in 0.82s
+23:52:11,891 Web_Scrapping INFO scrape_full_poster ran in 2.13s
+23:52:13,28 Web_Scrapping INFO scrape_posters ran in 1.14s
+23:52:15,264 Web_Scrapping INFO scrape_games ran in 1.31s
+23:52:15,264 Web_Scrapping INFO scrape_toString ran in 2.24s
+23:55:03,303 Web_Scrapping INFO scrape_games ran in 2.03s
+23:55:05,348 werkzeug INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+23:55:05,348 werkzeug INFO  * Restarting with stat
+23:55:07,288 Web_Scrapping INFO scrape_games ran in 1.46s
+23:55:09,561 werkzeug WARNING  * Debugger is active!
+23:55:09,561 werkzeug INFO  * Debugger PIN: 119-305-682
+23:55:11,220 werkzeug INFO 127.0.0.1 - - [12/Jul/2019 23:55:11] "GET / HTTP/1.1" 200 -
+23:55:15,719 werkzeug INFO 127.0.0.1 - - [12/Jul/2019 23:55:15] "POST /delete HTTP/1.1" 302 -
+23:55:15,725 werkzeug INFO 127.0.0.1 - - [12/Jul/2019 23:55:15] "GET / HTTP/1.1" 200 -
+23:55:22,848 werkzeug INFO 127.0.0.1 - - [12/Jul/2019 23:55:22] "POST /search HTTP/1.1" 200 -
+23:55:26,762 werkzeug INFO 127.0.0.1 - - [12/Jul/2019 23:55:26] "POST /search HTTP/1.1" 200 -

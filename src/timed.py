@@ -2,8 +2,15 @@ from functools import wraps
 import logging
 import time
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+def create_logger():
+    logging.basicConfig(filename="logs.txt",
+                            filemode='a',
+                            format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                            datefmt='%H:%M:%S',
+                            level=logging.INFO)
+
+    logger = logging.getLogger('Web_Scrapping')
+    return logger
 
 '''
 Decorator that logs the name of the function
@@ -13,6 +20,7 @@ def timed(enabled):
     def dec_timed(func):
         if enabled:
             def exec_time(*args, **kwargs):
+                logger = create_logger()
                 start = time.time()
                 result = func(*args, **kwargs)
                 end = time.time()

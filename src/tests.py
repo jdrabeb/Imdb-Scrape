@@ -1,8 +1,13 @@
 from videogame import Videogame
 from imdbScrape import imdbScrape
+from serializer import create_json
 
 URL = 'https://www.imdb.com/search/title/?genres=drama&sort=user_rating&title_type=game'
 DATA_LIMIT = 10
+
+games = imdbScrape.scrape_games(URL, DATA_LIMIT)
+# test create a JSON file
+create_json(games)
 
 # test scraping the miniature poster a given game
 poster = imdbScrape.scrape_poster_by_title(URL, DATA_LIMIT, "The last of us")

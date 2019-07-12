@@ -1,3 +1,4 @@
+import json
 from sqlalchemy import Column, String, Integer
 from sqlalchemy.ext.hybrid import hybrid_property
 from app import create_app
@@ -95,6 +96,15 @@ class Videogame(db.Model):
                 "\nDescription: " + self.description +
                 "\nVotes: " + self.votes +
                 "\n")
+    def toJSON(self):
+        return json.dumps({"title": self.title,
+                        "link": self.link,
+                        "image": self.image,
+                        "genre": self.genre,
+                        "date": self.date,
+                        "rating": self.rating,
+                        "description": self.description,
+                        "votes": self.votes})
 
 db.session.remove()
 db.drop_all()

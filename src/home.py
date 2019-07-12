@@ -19,11 +19,12 @@ scrape_games = imdbScrape.scrape_games(URL, DATA_LIMIT)
 for game in scrape_games:
     db.session.add(game)
     db.session.commit()
+print("Running on http://127.0.0.1:5000/")
 
 # Save games added to database in a csv file
 create_csv(scrape_games)
 # Save games added to database in a json file
-#create_json(scrape_games)
+create_json(scrape_games)
 
 '''
 Home page of the app
