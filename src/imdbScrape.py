@@ -1,15 +1,20 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import re
+import csv
 from videogame import Videogame
 
+URL = 'https://www.imdb.com/search/title/?genres=drama&sort=user_rating&title_type=game'
+DATA_LIMIT = 10
+
 class imdbScrape:
-    def scrape_games(pageUrl):
+    def scrape_games(pageUrl, data_limit):
         games = []
         html = urlopen(pageUrl)
         bs = BeautifulSoup(html, 'html.parser')
         try:
-            for element in bs.findAll("div", {"class": "lister-item mode-advanced"}):
+            for element in bs.findAll("div",
+                    {"class": "lister-item mode-advanced"})[:data_limit]:
                 game = Videogame()
                 game.set_link("www.imdb.com" + element.find("a")['href'])
                 game.set_image(element.find("img")['src'])
@@ -26,4 +31,20 @@ class imdbScrape:
         except AttributeError:
             print('Error')
         return games
+
+    def create_csv(games):
+        with open('games.csv', mode='w') as csv_file:
+            fieldnames = ['title', 'link', 'image', 'date', 'genre', 'rating',
+                   'description', 'votes']
+            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+            writer.writeheader()
+            for game in games:
+                writer.writerow({'title': game.get_title()})
+                writer.writerow({'link': game.get_link()})
+                writer.writerow({'image': game.get_image()})
+                writer.writerow({'date': game.get_date()})
+                writer.writerow({'genre': game.get_genre()})
+                writer.writerow({'rating': game.get_rating()})
+                writer.writerow({'description': game.get_description()})
+                writer.writerow({'votes': game.get_votes()})
 

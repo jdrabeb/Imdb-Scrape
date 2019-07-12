@@ -4,5 +4,9 @@
             <input type="text" name="title">
             <input type="submit" value="Add">
         </form>
+        <h1> Video Games </h1>
+        {% for game in games %}
+            <p>{{game.title}}</p>
+        {% endfor %}
     </body>
 </html>

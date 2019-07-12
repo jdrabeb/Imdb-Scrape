@@ -1,7 +1,26 @@
-class Videogame:
+from sqlalchemy import Column, String, Integer
+from sqlalchemy.ext.hybrid import hybrid_property
+from app import create_app
+
+db, app = create_app()
+
+class Videogame(db.Model):
+    __tablename__ = 'games'
+
+    game_id = Column(Integer, primary_key=True)
+    title = Column(String(80), nullable=False)
+    link = Column(String(150), nullable=False)
+    image = Column(String(150), nullable=False)
+    genre = Column(String(80), nullable=False)
+    date = Column(String(80), nullable=False)
+    rating = Column(String(80), nullable=False)
+    description = Column(String(80), nullable=False)
+    votes = Column(String(80), nullable=False)
+
     def __init__(
-            self, title = None, link = None, image = None, genre = None,
+            self, game_id = None, title = None, link = None, image = None, genre = None,
             date = None, rating = None, description = None, votes = None):
+        self.game_id = game_id
         self.title = title
         self.link = link
         self.image = image
@@ -10,6 +29,11 @@ class Videogame:
         self.rating = rating
         self.description = description
         self.votes = votes
+
+    def __repr__(self):
+        return "<Game(title='%s', genre='%s', date='%s')>" % (
+                                self.title, self.genre, self.date)
+
 
     def set_title(self, title):
         self.title = title
@@ -35,6 +59,30 @@ class Videogame:
     def set_votes(self, votes):
         self.votes = votes
 
+    def get_title(self):
+        return self.title
+
+    def get_link(self):
+        return self.link
+
+    def get_image(self):
+        return self.image
+
+    def get_genre(self):
+        return self.genre
+
+    def get_date(self):
+        return self.date
+
+    def get_rating(self):
+        return self.rating
+
+    def get_description(self):
+        return self.description
+
+    def get_votes(self):
+        return self.votes
+
     def toString(self):
         print("title: " + self.title +
                 ", genre: " + self.genre +
@@ -43,3 +91,6 @@ class Videogame:
                 ", description: " + self.description +
                 ", votes: " + self.votes)
 
+db.session.remove()
+db.drop_all()
+db.create_all()
